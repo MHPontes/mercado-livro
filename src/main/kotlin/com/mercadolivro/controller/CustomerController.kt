@@ -13,7 +13,10 @@ class CustomerController {
     val customers = mutableListOf<CustomerModel>()
 
     @GetMapping
-    fun getAll(): List<CustomerModel> {
+    fun getAll(@RequestParam name: String?): List<CustomerModel> {
+        name?.let {
+            return customers.filter { it.name.contains(name,true) }    //filtrando por nome ou parte do nome digitado no parametro da requisicao, o true indica que pode ser informado qualquer letra ou parte do nome
+        }
         return customers
     }
 
