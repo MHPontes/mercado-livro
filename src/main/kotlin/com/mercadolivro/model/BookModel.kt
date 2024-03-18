@@ -21,6 +21,6 @@ data class BookModel(
     var status: BookStatus? = null,
 
     @ManyToOne
-    @JoinColumn(name = "costumer_id")
+    @JoinColumn(name = "customer_id")
     var customer: CustomerModel? = null
 )

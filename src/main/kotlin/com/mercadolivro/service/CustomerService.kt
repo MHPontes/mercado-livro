@@ -27,7 +27,7 @@ class CustomerService(
         return customerRepository.findAll().toList()
     }
 
-    fun getCustomers(id: Int): CustomerModel {
+    fun getById(id: Int): CustomerModel {
 //        return customers.filter { it.id == id }.first()
         return customerRepository.findById(id).orElseThrow()
     }
