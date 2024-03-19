@@ -25,4 +25,9 @@ class BookController(
     fun findAll() : List<BookModel> {
         return bookService.findAll()
     }
+
+    @GetMapping("/active")
+    fun findActives() : List<BookModel> {
+        return bookService.findActives()       //Find por Status ATIVO
+    }
 }
