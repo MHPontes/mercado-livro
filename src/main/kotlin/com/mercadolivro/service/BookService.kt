@@ -8,7 +8,13 @@ import org.springframework.stereotype.Service
 class BookService(
     val bookRepository: BookRepository
 ) {
+
     fun create(book: BookModel) {
         bookRepository.save(book)
     }
+
+    fun findAll(): List<BookModel> {
+        return bookRepository.findAll().toList()
+    }
+
 }
