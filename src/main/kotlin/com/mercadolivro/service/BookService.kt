@@ -32,6 +32,10 @@ class BookService(
 
         book.status = BookStatus.CANCELADO
 
+        update(book)
+    }
+
+    fun update(book: BookModel) {
         bookRepository.save(book)
     }
 }
