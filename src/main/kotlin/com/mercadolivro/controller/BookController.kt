@@ -22,12 +22,23 @@ class BookController(
     }
 
     @GetMapping
-    fun findAll() : List<BookModel> {
+    fun findAll(): List<BookModel> {
         return bookService.findAll()
     }
 
     @GetMapping("/active")
-    fun findActives() : List<BookModel> {
+    fun findActives(): List<BookModel> {
         return bookService.findActives()       //Find por Status ATIVO
+    }
+
+    @GetMapping("/{id}")
+    fun findById(@PathVariable id: Int): BookModel {
+        return bookService.findById(id)
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun delete(@PathVariable id: Int) {
+        bookService.delete(id)
     }
 }
