@@ -30,7 +30,7 @@ data class BookModel(
         }
 
     constructor(
-        id: Int? = null,     //construtor secundario
+        id: Int? = null,     //construtor secundario devido a sobrescrita acima
         name: String,
         price: BigDecimal,
         customer: CustomerModel? = null,
