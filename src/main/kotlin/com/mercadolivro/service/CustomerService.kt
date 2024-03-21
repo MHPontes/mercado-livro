@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable
 
 @Service
 class CustomerService(
-    val customerRepository: CustomerRepository
+    val customerRepository: CustomerRepository,
+    val bookService: BookService
 ) {
 //    val customers = mutableListOf<CustomerModel>()
 
@@ -27,7 +28,7 @@ class CustomerService(
         return customerRepository.findAll().toList()
     }
 
-    fun getById(id: Int): CustomerModel {
+    fun findById(id: Int): CustomerModel {
 //        return customers.filter { it.id == id }.first()
         return customerRepository.findById(id).orElseThrow()
     }
@@ -57,10 +58,12 @@ class CustomerService(
 
     fun delete(@PathVariable id: Int) {
 //        customers.removeIf { it.id == id }
-        if (!customerRepository.existsById(id)) {
-            throw Exception()
-        }
+//        if (!customerRepository.existsById(id)) {     //Se customer nao existe, joga Exception
+//            throw Exception()
+//        }
 
+        val customer = findById(id)
+        bookService.deleteByCustomer(customer)
         customerRepository.deleteById(id)
     }
 }
