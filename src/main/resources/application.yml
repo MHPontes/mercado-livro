@@ -8,3 +8,11 @@ spring:
     password: root@2507
 jackson:
   default-property-inclusion: non_null   # Não exibe campos nulos, ex no ControllerAdvice, campo error
+
+  springdoc:
+    swagger-ui:
+      enabled: true
+
+      springdoc:
+        swagger-ui:
+          path: /swagger-ui.html
