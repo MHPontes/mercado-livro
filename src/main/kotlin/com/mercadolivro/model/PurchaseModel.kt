@@ -6,6 +6,7 @@ import java.time.LocalDateTime
 
 @Entity(name = "purchase")
 data class PurchaseModel(
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Int? = null,
