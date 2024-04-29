@@ -19,7 +19,7 @@ data class PurchaseModel(
     @JoinTable(name = "purchase_book",
         joinColumns = [JoinColumn(name = "purchase_id")], // Define a coluna de junção na tabela "Purchase". A coluna "purchase_id" na tabela "purchase_book" é mapeada para a chave primária da tabela "Purchase".
         inverseJoinColumns = [JoinColumn(name = "book_id")]) // Define a coluna de junção inversa na tabela "Book". A coluna "book_id" na tabela "purchase_book" é mapeada para a chave primária da tabela "Book".
-    val books: List<BookModel>,
+    val books: MutableList<BookModel>,
 
     @Column
     val nfe: String? = null,
