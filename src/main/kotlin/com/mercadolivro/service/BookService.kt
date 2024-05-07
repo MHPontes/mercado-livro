@@ -64,6 +64,9 @@ class BookService(
         bookRepository.saveAll(books)
     }
 
+    // =======================
+    // AULA - 74 - DESAFIO DE IMPLEMENTAÇÃO - Fazer com que busque os livros VENDIDOS.
+    // =======================
     fun findPurchaseBooks(pageable: Pageable): Page<BookModel> {
         return bookRepository.findByStatus(BookStatus.VENDIDO, pageable)
     }

@@ -37,6 +37,9 @@ class BookController(
         return bookService.findActives(pageable).map { it.toResponse() }      //Find por Status ATIVO
     }
 
+    // =======================
+    // AULA - 74 - DESAFIO DE IMPLEMENTAÇÃO - Fazer com que busque os livros VENDIDOS.
+    // =======================
     @GetMapping("/purchase")
     fun findPurchaseBooks(@PageableDefault(page = 0, size = 10) pageable : Pageable): Page<BookResponse> {
         return bookService.findPurchaseBooks(pageable).map { it.toResponse() }      //Find por Status VENDIDO
