@@ -25,7 +25,6 @@ class BookService(
 
     fun findActives(pageable: Pageable): Page<BookModel> {
         return bookRepository.findByStatus(BookStatus.ATIVO, pageable)
-
     }
 
     fun findById(id: Int): BookModel {
@@ -63,5 +62,9 @@ class BookService(
             it.status = BookStatus.VENDIDO
         }
         bookRepository.saveAll(books)
+    }
+
+    fun findPurchaseBooks(pageable: Pageable): Page<BookModel> {
+        return bookRepository.findByStatus(BookStatus.VENDIDO, pageable)
     }
 }

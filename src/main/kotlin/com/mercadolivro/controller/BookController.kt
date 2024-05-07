@@ -37,6 +37,11 @@ class BookController(
         return bookService.findActives(pageable).map { it.toResponse() }      //Find por Status ATIVO
     }
 
+    @GetMapping("/purchase")
+    fun findPurchaseBooks(@PageableDefault(page = 0, size = 10) pageable : Pageable): Page<BookResponse> {
+        return bookService.findPurchaseBooks(pageable).map { it.toResponse() }      //Find por Status VENDIDO
+    }
+
     @GetMapping("/{id}")
     fun findById(@PathVariable id: Int): BookResponse {
         return bookService.findById(id).toResponse()
