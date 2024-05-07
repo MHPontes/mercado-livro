@@ -6,10 +6,12 @@ import com.mercadolivro.controller.request.PutBookRequest
 import com.mercadolivro.controller.request.PutCustomerRequest
 import com.mercadolivro.controller.response.BookResponse
 import com.mercadolivro.controller.response.CustomerResponse
+import com.mercadolivro.controller.response.PurchaseResponse
 import com.mercadolivro.enums.BookStatus
 import com.mercadolivro.enums.CustomerStatus
 import com.mercadolivro.model.BookModel
 import com.mercadolivro.model.CustomerModel
+import com.mercadolivro.model.PurchaseModel
 
 fun PostCustomerRequest.toCustomerModel(): CustomerModel {
     return CustomerModel(name = this.name, email = this.email, status = CustomerStatus.ATIVO)
@@ -38,7 +40,7 @@ fun PutBookRequest.toBookModel(previousValue: BookModel): BookModel {
     )
 }
 
-fun CustomerModel.toResponse() : CustomerResponse {
+fun CustomerModel.toResponse(): CustomerResponse {
     return CustomerResponse(
         id = this.id,
         name = this.name,
@@ -47,12 +49,23 @@ fun CustomerModel.toResponse() : CustomerResponse {
     )
 }
 
-fun BookModel.toResponse() : BookResponse {
+fun BookModel.toResponse(): BookResponse {
     return BookResponse(
         id = this.id,
         name = this.name,
         price = this.price,
         status = this.status,
         customer = this.customer
+    )
+}
+
+fun PurchaseModel.toResponse(): PurchaseResponse {
+    return PurchaseResponse(
+        id = this.id,
+        price = this.price,
+        customer = this.customer,
+        books = this.books,
+        nfe = this.nfe!!,
+        createdAt = this.createdAt
     )
 }

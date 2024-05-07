@@ -1,9 +1,11 @@
 package com.mercadolivro.service
 
+import com.mercadolivro.controller.response.PurchaseResponse
 import com.mercadolivro.enums.BookStatus
 import com.mercadolivro.enums.Errors
 import com.mercadolivro.events.PurchaseEvent
 import com.mercadolivro.exception.BadRequestException
+import com.mercadolivro.extension.toResponse
 import com.mercadolivro.model.PurchaseModel
 import com.mercadolivro.repository.BookRepository
 import com.mercadolivro.repository.PurchaseRepository
@@ -37,8 +39,15 @@ class PurchaseService(
         }
     }
 
-
     fun update(purchaseModel: PurchaseModel) {
         purchaseRepository.save(purchaseModel)
     }
+
+    // =======================
+    // AULA - 74 - DESAFIO DE IMPLEMENTAÇÃO - Fazer com que busque as compras do cliente.
+    // =======================
+    fun getByPurchaseByCustomer(id: Int): List<PurchaseResponse> {
+        return purchaseRepository.findByCustomerId(id).map { it.toResponse() }
+    }
 }
+
